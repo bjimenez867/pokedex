@@ -1,0 +1,44 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  @if(pokemon){
+
+    <div class="ion-text-center">
+      <ion-img [src]="pokemon.sprite" />
+      <ion-text class="ion-text-capitalize">
+        <h1>{{pokemon.name}}</h1>
+      </ion-text>
+    </div>
+
+    <ion-list>
+      <ion-item>
+        <ion-label>Altura</ion-label>
+        <ion-text>{{pokemon.height}} m</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Peso</ion-label>
+        <ion-text>{{pokemon.weight}} kg</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Habilidades</ion-label>
+        <ion-text class="ion-text-capitalize">{{pokemon.abilities.join(', ')}}</ion-text>
+      </ion-item>
+      @if(pokemon.hiddenAbility){
+        <ion-item>
+          <ion-label>Habilidad oculta</ion-label>
+          <ion-text class="ion-text-capitalize">{{pokemon.hiddenAbility}}</ion-text>
+        </ion-item>
+      }
+    </ion-list>
+
+    <ion-list>
+      @for(stat of pokemon.stats; track stat.name){
+        <ion-item>
+          <ion-label class="ion-text-capitalize">{{stat.name}}</ion-label>
+          <ion-text>{{stat.base_stat}}</ion-text>
+        </ion-item>
+      }
+    </ion-list>
+
+  }
+
+</ion-content>
